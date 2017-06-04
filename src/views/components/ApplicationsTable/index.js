@@ -89,3 +89,19 @@ class ApplicationsTable extends Component {
         "minHeight": "825px",
       }
     }
+    return (
+      <div className="uk-overflow-auto">
+        {this.props.applications.length > 0 ?
+          <div>
+            <form>
+              <div className="uk-margin-left">
+                <input
+                  className="uk-input uk-width-medium"
+                  type="text"
+                  placeholder="Filter By Company Name"
+                  value={this.state.filter}
+                  onChange={this.handleFilterChange}
+                />
+              </div>
+            </form>
+            
