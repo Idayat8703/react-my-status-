@@ -42,3 +42,32 @@ export default {
     })
     .then(parseResponse)
   },
+  patch(url, data ={}, token) {
+    const body = JSON.stringify(data)
+
+    const headers =  {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer: ${token}`
+    }
+
+    return fetch(`${BASE_URL}${url}`, {
+      method: 'PATCH',
+      headers: headers,
+      body: body
+    })
+    .then(parseResponse)
+  },
+
+  delete(url, token) {
+    const headers =  {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer: ${token}`
+    }
+    return fetch(`${BASE_URL}${url}`, {
+      method: 'DELETE',
+      headers: headers
+    })
+  }
+}
