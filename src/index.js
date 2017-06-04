@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './styles/uikit.css';
+import { Provider } from 'react-redux'
 
+import './styles/uikit.css';
+import App from './containers/App';
+import store from './redux/store'
 
 ReactDOM.render(
-  <App />,  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
