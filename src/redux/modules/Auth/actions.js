@@ -44,3 +44,21 @@ export const signup = (user, router) => {
       })
   }
 }
+export const login = (user, router) => {
+  return dispatch => {
+    dispatch(authRequest());
+    return ApiServices.post(`/auth`, user)
+      .then(response => {
+        const { user, token } = response;
+        localStorage.setItem('token', token);
+        dispatch(authSuccess(user, token))
+        dispatch(reset('login'));
+        router.history.replace('/dashboard');
+      })
+      .catch((errors) => {
+        console.log(errors)
+        dispatch(authFailure(errors))
+        throw new SubmissionError(errors)
+      })
+  }
+}
