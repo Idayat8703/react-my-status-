@@ -46,3 +46,18 @@ class ApplicationsTable extends Component {
         console.log(errors);
       })
   }
+  handleUpdateApplication = (data) => {
+    const user_id = this.props.currentUser.id
+    const app_id = this.props.currentApplication.id
+    return ApiServices.patch("/users/" + user_id + "/applications/" + app_id, data, this.props.token)
+      .then(response => {
+        const { application } = response
+        this.props.editApplication(application)
+        this.props.reset('application')
+        this.closeModal()
+      })
+      .catch((errors) => {
+        console.log(errors)
+        throw new SubmissionError(errors)
+      })
+  }
