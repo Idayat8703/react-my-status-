@@ -104,4 +104,22 @@ class ApplicationsTable extends Component {
                 />
               </div>
             </form>
-            
+            <table className="uk-table uk-table-hover uk-table-divider">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Job Title</th>
+                  <th>Contact</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                  <th className="uk-table-expand">Notes</th>
+                  <th className="uk-table-shrink uk-table-middle">Completed</th>
+                  <th className="uk-table-shrink"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {RenderedRows}
+              </tbody>
+
+            </table>
+          </div>
