@@ -27,6 +27,49 @@ type Props = {
   authFailure: () => void
 }
 
+class App extends Component {
+
+  props: Props
+
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.props.authenticate(token)
+    } else {
+      // Ping the API server in case it hasn't been used in 30 inutes and Heroku put it to sleep
+      fetch('http://localhost:3000/api/v1')
+    }
+  }
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Navbar isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} currentUser={this.props.currentUser.name || this.props.currentUser.username}/>
+          <Switch>
+            <Route exact path="/" render={() => (
+              this.props.isAuthenticated ? (
+                <Redirect to="/dashboard"/>
+              ) : (
+                <Welcome />
+              )
+            )}/>
+            <Route exact path="/signup" component={Signup} isAuthenticated={this.props.isAuthenticated} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" render={() => (
+              this.props.isAuthenticated ? (
+                <Dashboard />
+              ) : (
+                <Redirect to="/"/>
+              )
+            )}/>
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+}
+
 
 
 class App extends Component {
