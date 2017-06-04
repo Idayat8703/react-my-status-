@@ -17,6 +17,18 @@ import NotFound from '../views/NotFound'
 import Dashboard from '../views/Dashboard'
 import Navbar from '../views/Navbar'
 
+// custom made components
+import { authenticate, authFailure } from '../redux/modules/Auth/actions'
+
+type Props = {
+  isAuthenticated: boolean,
+  logout: () => void,
+  authenticate: () => void,
+  authFailure: () => void
+}
+
+
+
 class App extends Component {
   render() {
     return (
