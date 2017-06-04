@@ -29,3 +29,11 @@ class ApplicationsTable extends Component {
        console.log(errors);
      })
   }
+  setApplication = (id) => this.props.setCurrentApplication(id)
+  openModal = () => this.setState({modalIsOpen: true})
+  closeModal = () => this.setState({modalIsOpen: false})
+
+  handleRowClick = (id) => {
+    this.setApplication(id)
+    this.openModal()
+  }
