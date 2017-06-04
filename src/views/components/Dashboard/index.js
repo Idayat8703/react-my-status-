@@ -69,3 +69,11 @@ class Dashboard extends Component {
       </div>
     )}
   }
+  const mapStateToProps = (state) => {
+    return {
+      currentUser: state.auth.currentUser,
+      token: state.auth.token,
+      currentApplication: state.applications.currentApplication
+    }
+  }
+  export default connect(mapStateToProps, { addApplication, clearCurrentApplication, reset })(Dashboard)
