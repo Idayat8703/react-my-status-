@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { logout } from '../redux/modules/Auth/actions'
+import fetch from 'isomorphic-fetch'
 
 class App extends Component {
   render() {
