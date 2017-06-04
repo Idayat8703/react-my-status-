@@ -44,3 +44,24 @@ class UserForm extends Component {
       })
     }
   }
+  render() {
+    const {handleSubmit, errors} = this.props
+    const renderedErrorsLi = errors.map((error, i) => <li key={i}>{error}</li>)
+    let NameField;
+    if (this.props.action === 'signup') {
+      NameField = <div>
+        <label className="uk-form-label" htmlFor="name">Name (optional)</label>
+        <div className="uk-form-controls">
+            <Field
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange.bind(this)}
+              className="uk-input uk-width-medium"
+              component="input"
+              id="name"
+              type="text"
+              placeholder="Name"
+            /><br /><br />
+          </div>
+        </div>
+    }
