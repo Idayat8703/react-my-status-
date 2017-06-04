@@ -26,3 +26,19 @@ export default {
     })
     .then(parseResponse)
   },
+  post(url, data ={}, token) {
+    const body = JSON.stringify(data)
+
+    const headers =  {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer: ${token}`
+    }
+
+    return fetch(`${BASE_URL}${url}`, {
+      method: 'POST',
+      headers: headers,
+      body: body
+    })
+    .then(parseResponse)
+  },
