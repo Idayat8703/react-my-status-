@@ -16,3 +16,16 @@ const validate = values => {
 
   return errors;
 }
+class UserForm extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      username: "",
+      password: "",
+      name: "",
+      usernameErrors: {},
+      passwordErrors: {}
+    }
+  }
