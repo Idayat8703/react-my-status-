@@ -107,3 +107,10 @@ class ApplicationForm extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return { currentApplication: state.applications.currentApplication }
+}
+
+ApplicationForm = connect(mapStateToProps)(form(ApplicationForm))
+
+export default ApplicationForm
