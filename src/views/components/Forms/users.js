@@ -29,3 +29,18 @@ class UserForm extends Component {
       passwordErrors: {}
     }
   }
+  handleSubmit = data => this.props.onSubmit(data)
+
+  handleChange(event) {
+    if (event.target.name === 'username') {
+      this.setState({
+        usernameErrors: validate({username: event.target.value}),
+        username: event.target.value
+      })
+    } else if (event.target.name === 'password') {
+      this.setState({
+        passwordErrors: validate({password: event.target.value}),
+        password: event.target.value
+      })
+    }
+  }
