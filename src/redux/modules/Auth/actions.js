@@ -62,3 +62,25 @@ export const login = (user, router) => {
       })
   }
 }
+export const authenticate = (token) => {
+  return dispatch => {
+    dispatch(authRequest())
+    return ApiServices.post('/auth/refresh', null, token)
+      .then(response => {
+        const { user, token } = response
+        localStorage.setItem('token', token)
+        dispatch(authSuccess(user, token))
+      })
+      .catch((errors) => {
+        console.log(errors);
+        dispatch(authFailure(errors))
+        localStorage.removeItem('token')
+      })
+  }
+}
+
+export const logout = (router) => {
+  localStorage.removeItem('token')
+  router.history.replace('/')
+  return { type: 'LOGOUT' }
+}
