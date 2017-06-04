@@ -61,3 +61,11 @@ class ApplicationsTable extends Component {
         throw new SubmissionError(errors)
       })
   }
+  filteredApplications = () => {
+    const filter = this.state.filter
+    if (filter && filter.length > 0) {
+      return this.props.applications.filter(app => app.company.includes(filter))
+    } else {
+      return this.props.applications
+    }
+  }
