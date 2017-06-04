@@ -104,3 +104,8 @@ class UserForm extends Component {
     )
   }
 }
+
+export default reduxForm({
+  form: 'user',
+  validate
+})(UserForm);
