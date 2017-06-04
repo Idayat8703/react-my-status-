@@ -40,3 +40,17 @@ export default (state = initialState, action) => {
                 ],
                 currentApplication: {}
             }
+            case 'DELETE_APPLICATION':
+              const deleteIndex = state.applications.findIndex(a => a.id === action.id)
+              return {
+                applications: [
+                      ...state.applications.slice(0, deleteIndex),
+                      ...state.applications.slice(deleteIndex + 1)
+                    ],
+                    currentApplication: {}
+              }
+
+            default:
+              return state;
+          }
+        }
