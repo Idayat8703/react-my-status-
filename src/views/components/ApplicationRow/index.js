@@ -7,3 +7,12 @@ function ApplicationRow(props){
       props.onDelete(props.user_id, props.application.id)
     }
   }
+  
+  let contact = ""
+  if (props.application.contact_name && props.application.contact_title) {
+    contact = props.application.contact_name + " - " + props.application.contact_title
+  } else if (props.application.contact_name) {
+    contact = props.application.contact_name
+  } else if (props.application.contact_title) {
+    contact = props.application.contact_title
+  }
