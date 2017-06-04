@@ -37,3 +37,12 @@ class ApplicationsTable extends Component {
     this.setApplication(id)
     this.openModal()
   }
+  removeItem = (user_id, app_id) => {
+    return ApiServices.delete("/users/" + user_id + "/applications/" + app_id, this.props.token)
+      .then(() => {
+        this.props.deleteApplication(app_id)
+      })
+      .catch((errors) => {
+        console.log(errors);
+      })
+  }
