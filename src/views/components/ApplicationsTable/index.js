@@ -123,3 +123,22 @@ class ApplicationsTable extends Component {
 
             </table>
           </div>
+          :
+            <div>
+              <h2 className="uk-heading-line uk-text-center uk-text-capitalize"><span>You do not have any applications yet</span></h2>
+              <h3 className="uk-heading-line uk-text-center uk-text-capitalize"><span>Click on the "New Application" button to add a new application</span></h3>
+            </div>
+          }
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            contentLabel="Modal"
+            onRequestClose={this.closeModal}
+            style={modalStyle}>
+            <h1 className="uk-heading-line uk-text-center uk-padding"><span>View/Edit Application</span></h1>
+            <ApplicationForm onSubmit={this.handleUpdateApplication}/>
+            <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+          </Modal>
+        </div>
+      )
+    }
+  }
