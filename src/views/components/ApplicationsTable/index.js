@@ -81,3 +81,11 @@ class ApplicationsTable extends Component {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .map((app, index) => <ApplicationRow key={index} application={app} user_id={this.props.currentUser.id} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
     }
+
+    const modalStyle = {
+      overlay: {
+        "position": "absolute",
+        "overflow": "auto",
+        "minHeight": "825px",
+      }
+    }
