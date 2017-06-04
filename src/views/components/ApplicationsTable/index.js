@@ -142,3 +142,14 @@ class ApplicationsTable extends Component {
       )
     }
   }
+  const mapStateToProps = (state) => {
+    return {
+      applications: state.applications.applications,
+      currentApplication: state.applications.currentApplication,
+      currentUser: state.auth.currentUser,
+      token: state.auth.token
+    }
+  }
+
+
+  export default connect(mapStateToProps, { gotApplications, setCurrentApplication, deleteApplication, editApplication, reset })(ApplicationsTable)
