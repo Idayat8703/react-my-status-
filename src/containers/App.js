@@ -69,7 +69,12 @@ class App extends Component {
     );
   }
 }
-
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    currentUser: state.auth.currentUser
+  }
+}
 
 
 class App extends Component {
