@@ -43,3 +43,67 @@ class ApplicationForm extends Component {
     }
     this.props.initialize(initData)
   }
+  handleFormSubmit = data => this.props.onSubmit(data)
+
+  render() {
+    const {handleSubmit} = this.props
+    return (
+      <div>
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <div className="uk-margin uk-position-center">
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Who am I applying with?</span></h3>
+            <label className="uk-form-label">Company:</label>
+            <Field
+              name="company"
+              component={renderField}
+            />
+            <label className="uk-form-label">Contact Name:</label>
+            <Field
+              name="contact_name"
+              component={renderField}
+            />
+            <label className="uk-form-label">Contact Title:</label>
+            <Field
+              name="contact_title"
+              component={renderField}
+            />
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What are we doing?</span></h3>
+            <label className="uk-form-label">Date:</label>
+            <Field
+              name="date"
+              component={renderDatePicker}
+            />
+            <label className="uk-form-label">Action:</label>
+            <Field
+              name="action"
+              component={renderField}
+            />
+            <label className="uk-form-label">Completed?</label>
+            <Field
+              name="complete"
+              component={renderCheckbox}
+            />
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What kind of job is this for?</span></h3>
+            <label className="uk-form-label">Job Title:</label>
+            <Field
+              name="job_title"
+              component={renderField}
+            />
+            <label className="uk-form-label">Job URL:</label>
+            <Field
+              name="job_url"
+              component={renderField}
+            />
+          <label className="uk-form-label">Notes:</label>
+            <Field
+              name="notes"
+              type="textarea"
+              component={renderField}
+            />
+          </div>
+          <button action="submit" className="uk-button uk-position-bottom-center uk-margin-bottom uk-button-primary">Save</button>
+        </form>
+      </div>
+    )
+  }
+}
