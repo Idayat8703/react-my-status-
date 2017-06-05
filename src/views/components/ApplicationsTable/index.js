@@ -73,7 +73,7 @@ class ApplicationsTable extends Component {
 
   render() {
 
-    let RenderedRows = <tr><td className="uk-text-bold uk-text-muted uk-text-center">No Applications Match The Current Criteria </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    let RenderedRows = <tr><td>No Applications Match The Current Criteria </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
     if (this.filteredApplications().length > 0) {
 
@@ -90,13 +90,13 @@ class ApplicationsTable extends Component {
       }
     }
     return (
-      <div className="uk-overflow-auto">
+      <div>
         {this.props.applications.length > 0 ?
           <div>
             <form>
-              <div className="uk-margin-left">
+              <div>
                 <input
-                  className="uk-input uk-width-medium"
+
                   type="text"
                   placeholder="Filter By Company Name"
                   value={this.state.filter}
@@ -104,7 +104,7 @@ class ApplicationsTable extends Component {
                 />
               </div>
             </form>
-            <table className="uk-table uk-table-hover uk-table-divider">
+            <table>
               <thead>
                 <tr>
                   <th>Company</th>
@@ -112,9 +112,9 @@ class ApplicationsTable extends Component {
                   <th>Contact</th>
                   <th>Date</th>
                   <th>Action</th>
-                  <th className="uk-table-expand">Notes</th>
-                  <th className="uk-table-shrink uk-table-middle">Completed</th>
-                  <th className="uk-table-shrink"></th>
+                  <th>Notes</th>
+                  <th>Completed</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -125,18 +125,18 @@ class ApplicationsTable extends Component {
           </div>
           :
             <div>
-              <h2 className="uk-heading-line uk-text-center uk-text-capitalize"><span>You do not have any applications yet</span></h2>
-              <h3 className="uk-heading-line uk-text-center uk-text-capitalize"><span>Click on the "New Application" button to add a new application</span></h3>
+              <h2><span>You do not have any applications yet</span></h2>
+              <h3><span>Click on the "New Application" button to add a new application</span></h3>
             </div>
           }
           <Modal
             isOpen={this.state.modalIsOpen}
-            contentLabel="Modal"
+            contentLabe
             onRequestClose={this.closeModal}
             style={modalStyle}>
-            <h1 className="uk-heading-line uk-text-center uk-padding"><span>View/Edit Application</span></h1>
+            <h1><span>View/Edit Application</span></h1>
             <ApplicationForm onSubmit={this.handleUpdateApplication}/>
-            <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+            <button type="button" onClick={this.closeModal}>X</button>
           </Modal>
         </div>
       )

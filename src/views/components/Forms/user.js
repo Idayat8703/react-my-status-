@@ -50,13 +50,12 @@ class UserForm extends Component {
     let NameField;
     if (this.props.action === 'signup') {
       NameField = <div>
-        <label className="uk-form-label" htmlFor="name">Name (optional)</label>
-        <div className="uk-form-controls">
+        <label htmlFor="name">Name (optional)</label>
+        <div>
             <Field
               name="name"
               value={this.state.name}
               onChange={this.handleChange.bind(this)}
-              className="uk-input uk-width-medium"
               component="input"
               id="name"
               type="text"
@@ -66,17 +65,16 @@ class UserForm extends Component {
         </div>
     }
     return (
-      <form className="uk-form-stacked" onSubmit={handleSubmit(this.handleSubmit)}>
+      <form  onSubmit={handleSubmit(this.handleSubmit)}>
         {errors.length > 0 ? <ul className="uk-alert-danger">{renderedErrorsLi}</ul> : null}
-        <div className="uk-margin">
+        <div>
           {NameField}
-          <label className="uk-form-label" htmlFor="username">Username*</label>
-          <div className="uk-form-controls">
+          <label htmlFor="username">Username*</label>
+          <div>
               <Field
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange.bind(this)}
-                className="uk-input uk-width-medium"
                 component="input"
                 id="username"
                 type="text"
@@ -84,13 +82,12 @@ class UserForm extends Component {
               /><br />
             {!!this.state.usernameErrors.username ? <small className="uk-alert-danger">{this.state.usernameErrors.username}</small> : <small><font color="white">.</font></small>}
           </div>
-          <label className="uk-form-label" htmlFor="password">Password*</label>
-          <div className="uk-form-controls">
+          <label htmlFor="password">Password*</label>
+          <div>
               <Field
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange.bind(this)}
-                className="uk-input uk-width-medium"
                 component="input"
                 id="password"
                 type="password"
@@ -98,7 +95,7 @@ class UserForm extends Component {
               /><br />
             {!!this.state.passwordErrors.password ? <small className="uk-alert-danger">{this.state.passwordErrors.password}</small> : <small><font color="white">.</font></small>}
           </div><br />
-          <input type="submit" className="uk-button uk-button-default uk-position-bottom-center" value={this.props.action === "signup" ? "Create User" : "Log In"} />
+          <input type="submit" value={this.props.action === "signup" ? "Create User" : "Log In"} />
         </div>
       </form>
     )

@@ -28,15 +28,15 @@ class Navbar extends Component {
         <div>
           {
             this.props.isAuthenticated ?
-            <nav className="uk-navbar-container navbar uk-navbar">
-              <div className="uk-navbar-left">
-                <ul className="uk-navbar-nav uk-iconnav">
+            <nav>
+              <div>
+                <ul>
                   <li><NavLink to="/">Home</NavLink></li>
                   <li><NavLink to="/" onClick={this.handleLogout}>Log Out</NavLink></li>
                 </ul>
               </div>
-              <div className="uk-navbar-right uk-padding-small">
-                <ul className="uk-navbar-nav">
+              <div>
+                <ul>
                   <li>Hello {this.props.currentUser}!</li>
                 </ul>
               </div>
@@ -44,7 +44,7 @@ class Navbar extends Component {
 
             :
 
-            <ul className="uk-navbar-nav">
+            <ul>
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/signup">Signup</NavLink></li>
               <li><NavLink to="/login">Login</NavLink></li>

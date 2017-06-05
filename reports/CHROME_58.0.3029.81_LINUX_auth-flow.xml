@@ -5,9 +5,9 @@
 
   <testsuite name="auth-flow"
     errors="0" failures="1" hostname="" id="" package="auth-flow" skipped="2"
-    tests="3" time="4.020" timestamp="Sun, 04 Jun 2017 14:36:17 GMT">
+    tests="3" time="3.516" timestamp="Sun, 04 Jun 2017 17:32:05 GMT">
   
-    <testcase name="get to signup page" classname="auth-flow" time="4.020" assertions="1">  <failure message="Timed out while waiting for element &lt;.navbar&gt; to be present for 1000 milliseconds.">    at Object.get to signup page (/home/idayat/code/labs/client/tests/auth-flow.js:6:8)
+    <testcase name="get to signup page" classname="auth-flow" time="3.516" assertions="1">  <failure message="Timed out while waiting for element &lt;.navbar&gt; to be present for 1000 milliseconds.">    at Object.get to signup page (/home/idayat/code/labs/client/tests/auth-flow.js:6:8)
     at _combinedTickCallback (internal/process/next_tick.js:67:7)</failure>
 
     

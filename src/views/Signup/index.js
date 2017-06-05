@@ -15,8 +15,8 @@ class Signup extends Component {
 
   render() {
     return(
-      <div className="uk-position-center">
-        <h2 className="uk-heading-line uk-text-center"><span>Sign Up:</span></h2>
+      <div>
+        <h2><span>Sign Up:</span></h2>
         <UserForm action="signup" onSubmit={this.handleSignup} errors={this.props.authErrors}/>
       </div>
     )
