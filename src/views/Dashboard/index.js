@@ -55,7 +55,6 @@ class Dashboard extends Component {
         <h1 className><span>My Job Dashboard</span></h1>
         <NewApplicationButton onClick={this.openApplicationForm}/>
         <ApplicationsTable />
-        <NewApplicationButton onClick={this.openApplicationForm}/>
         <Modal
           isOpen={this.state.modalIsOpen}
           contentLabel
