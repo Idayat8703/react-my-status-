@@ -11,12 +11,13 @@ class Signup extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
+
   handleSignup = data => this.props.signup({user: data}, this.context.router)
 
   render() {
     return(
-      <div>
-        <h2><span>Sign Up:</span></h2>
+      <div className="uk-position-center">
+        <h2 className="uk-heading-line uk-text-center"><span>Sign Up:</span></h2>
         <UserForm action="signup" onSubmit={this.handleSignup} errors={this.props.authErrors}/>
       </div>
     )
