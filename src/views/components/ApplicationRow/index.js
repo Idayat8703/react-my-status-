@@ -7,7 +7,6 @@ function ApplicationRow(props){
       props.onDelete(props.user_id, props.application.id)
     }
   }
-
   let contact = ""
   if (props.application.contact_name && props.application.contact_title) {
     contact = props.application.contact_name + " - " + props.application.contact_title
@@ -25,7 +24,7 @@ function ApplicationRow(props){
           <td onClick={handleClick}>{props.application.action}</td>
           <td onClick={handleClick}>{props.application.notes}</td>
           <td onClick={handleClick}>{props.application.complete ? 	<span>&#x2713;</span> :	<span>&#x2717;</span> }</td>
-          <td><button onClick={handleDelete}>Delete</button></td>
+          <td><button className="uk-button uk-button-danger uk-button-small" onClick={handleDelete}>Delete</button></td>
         </tr>)
 }
 export default ApplicationRow

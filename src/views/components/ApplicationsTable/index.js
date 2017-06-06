@@ -8,6 +8,7 @@ import ApiServices from '../../../redux/services/Api'
 import ApplicationRow from '../ApplicationRow'
 import ApplicationForm from '../../components/Forms/application'
 
+
 class ApplicationsTable extends Component {
 
   constructor(props) {
@@ -18,6 +19,7 @@ class ApplicationsTable extends Component {
       filter: ""
     }
   }
+
   componentDidMount() {
     const user_id = this.props.currentUser.id
 
@@ -29,6 +31,7 @@ class ApplicationsTable extends Component {
        console.log(errors);
      })
   }
+
   setApplication = (id) => this.props.setCurrentApplication(id)
   openModal = () => this.setState({modalIsOpen: true})
   closeModal = () => this.setState({modalIsOpen: false})
@@ -37,6 +40,8 @@ class ApplicationsTable extends Component {
     this.setApplication(id)
     this.openModal()
   }
+
+
   removeItem = (user_id, app_id) => {
     return ApiServices.delete("/users/" + user_id + "/applications/" + app_id, this.props.token)
       .then(() => {
@@ -46,6 +51,7 @@ class ApplicationsTable extends Component {
         console.log(errors);
       })
   }
+
   handleUpdateApplication = (data) => {
     const user_id = this.props.currentUser.id
     const app_id = this.props.currentApplication.id
@@ -61,6 +67,7 @@ class ApplicationsTable extends Component {
         throw new SubmissionError(errors)
       })
   }
+
   filteredApplications = () => {
     const filter = this.state.filter
     if (filter && filter.length > 0) {
@@ -69,11 +76,12 @@ class ApplicationsTable extends Component {
       return this.props.applications
     }
   }
+
   handleFilterChange = (event) => this.setState({filter: event.target.value})
 
   render() {
 
-    let RenderedRows = <tr><td>No Applications Match The Current Criteria </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    let RenderedRows = <tr><td className="uk-text-bold uk-text-muted uk-text-center">No Applications Match The Current Criteria </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
     if (this.filteredApplications().length > 0) {
 
@@ -89,14 +97,15 @@ class ApplicationsTable extends Component {
         "minHeight": "825px",
       }
     }
+
     return (
-      <div>
+      <div className="uk-overflow-auto">
         {this.props.applications.length > 0 ?
           <div>
             <form>
-              <div>
+              <div className="uk-margin-left">
                 <input
-
+                  className="uk-input uk-width-medium"
                   type="text"
                   placeholder="Filter By Company Name"
                   value={this.state.filter}
@@ -104,7 +113,7 @@ class ApplicationsTable extends Component {
                 />
               </div>
             </form>
-            <table>
+            <table className="uk-table uk-table-hover uk-table-divider">
               <thead>
                 <tr>
                   <th>Company</th>
@@ -112,9 +121,9 @@ class ApplicationsTable extends Component {
                   <th>Contact</th>
                   <th>Date</th>
                   <th>Action</th>
-                  <th>Notes</th>
-                  <th>Completed</th>
-                  <th></th>
+                  <th className="uk-table-expand">Notes</th>
+                  <th className="uk-table-shrink uk-table-middle">Completed</th>
+                  <th className="uk-table-shrink"></th>
                 </tr>
               </thead>
               <tbody>
@@ -123,33 +132,34 @@ class ApplicationsTable extends Component {
 
             </table>
           </div>
-          :
-            <div>
-              <h2><span>You do not have any applications yet</span></h2>
-              <h3><span>Click on the "New Application" button to add a new application</span></h3>
-            </div>
-          }
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            contentLabe
-            onRequestClose={this.closeModal}
-            style={modalStyle}>
-            <h1><span>View/Edit Application</span></h1>
-            <ApplicationForm onSubmit={this.handleUpdateApplication}/>
-            <button type="button" onClick={this.closeModal}>X</button>
-          </Modal>
-        </div>
-      )
-    }
+        :
+          <div>
+            <h2 className="uk-heading-line uk-text-center uk-text-capitalize"><span>You do not have any applications yet</span></h2>
+            <h3 className="uk-heading-line uk-text-center uk-text-capitalize"><span>Click on the "New Application" button to add a new application</span></h3>
+          </div>
+        }
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          contentLabel="Modal"
+          onRequestClose={this.closeModal}
+          style={modalStyle}>
+          <h1 className="uk-heading-line uk-text-center uk-padding"><span>View/Edit Application</span></h1>
+          <ApplicationForm onSubmit={this.handleUpdateApplication}/>
+          <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+        </Modal>
+      </div>
+    )
   }
-  const mapStateToProps = (state) => {
-    return {
-      applications: state.applications.applications,
-      currentApplication: state.applications.currentApplication,
-      currentUser: state.auth.currentUser,
-      token: state.auth.token
-    }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    applications: state.applications.applications,
+    currentApplication: state.applications.currentApplication,
+    currentUser: state.auth.currentUser,
+    token: state.auth.token
   }
+}
 
 
-  export default connect(mapStateToProps, { gotApplications, setCurrentApplication, deleteApplication, editApplication, reset })(ApplicationsTable)
+export default connect(mapStateToProps, { gotApplications, setCurrentApplication, deleteApplication, editApplication, reset })(ApplicationsTable)
