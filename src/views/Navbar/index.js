@@ -6,6 +6,7 @@ type Props = {
   isAuthenticated: boolean,
   logout: () => void,
 }
+
 class Navbar extends Component {
 
   constructor(props) {
@@ -23,20 +24,21 @@ class Navbar extends Component {
   handleLogout() {
     this.props.logout(this.context.router)
   }
+
   render() {
     return (
         <div>
           {
             this.props.isAuthenticated ?
-            <nav>
-              <div>
-                <ul>
+            <nav className="uk-navbar-container navbar uk-navbar">
+              <div className="uk-navbar-left">
+                <ul className="uk-navbar-nav uk-iconnav">
                   <li><NavLink to="/">Home</NavLink></li>
                   <li><NavLink to="/" onClick={this.handleLogout}>Log Out</NavLink></li>
                 </ul>
               </div>
-              <div>
-                <ul>
+              <div className="uk-navbar-right uk-padding-small">
+                <ul className="uk-navbar-nav">
                   <li>Hello {this.props.currentUser}!</li>
                 </ul>
               </div>

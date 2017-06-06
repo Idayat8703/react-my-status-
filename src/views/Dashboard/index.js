@@ -53,7 +53,6 @@ class Dashboard extends Component {
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>My Job Dashboard</span></h1>
-        <NewApplicationButton onClick={this.openApplicationForm}/>
         <ApplicationsTable />
         <NewApplicationButton onClick={this.openApplicationForm}/>
         <Modal
