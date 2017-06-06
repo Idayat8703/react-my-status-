@@ -52,7 +52,7 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <h1 className="uk-heading-line uk-text-center uk-padding"><span>My Job Dashboard</span></h1>
+        <h1 className="uk-heading-line uk-text-center uk-padding"><span>My Dashboard</span></h1>
         <ApplicationsTable />
         <NewApplicationButton onClick={this.openApplicationForm}/>
         <Modal
@@ -62,7 +62,7 @@ class Dashboard extends Component {
           style={modalStyle}>
           <h1 className="uk-heading-line uk-text-center uk-padding"><span>New Application</span></h1>
           <ApplicationForm onSubmit={this.handleNewApplication}/>
-          <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+          <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>close</button>
         </Modal>
 
       </div>
