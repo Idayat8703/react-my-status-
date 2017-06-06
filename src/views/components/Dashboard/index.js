@@ -43,16 +43,10 @@ class Dashboard extends Component {
 
   }
   render() {
-    const modalStyle = {
-      overlay: {
-        "position": "absolute",
-        "overflow": "auto",
-        "minHeight": "825px",
-      }
-    }
+
     return (
       <div>
-        <h1><span>My Job Dashboard</span></h1>
+        <h1><span>My Dashboard</span></h1>
         <NewApplicationButton onClick={this.openApplicationForm}/>
         <ApplicationsTable />
         <NewApplicationButton onClick={this.openApplicationForm}/>
@@ -60,7 +54,7 @@ class Dashboard extends Component {
           isOpen={this.state.modalIsOpen}
           contentLabel
           onRequestClose={this.closeModal}
-          style={modalStyle}>
+          >
           <h1 className><span>New Application</span></h1>
           <ApplicationForm onSubmit={this.handleNewApplication}/>
           <button type="button" onClick={this.closeModal}>X</button>
