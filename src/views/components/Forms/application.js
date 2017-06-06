@@ -5,20 +5,21 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 const form = reduxForm({
   form: 'application'
 })
 
 const renderField = field => (
-    <input {...field.input}/>
+    <input className="uk-input uk-width-small uk-margin-left uk-margin-right uk-form-controls" {...field.input}/>
 )
 
 const renderCheckbox = field => (
-    <input type="checkbox"{...field.input}/>
+    <input type="checkbox" className="uk-checkbox uk-margin-left" {...field.input}/>
 )
 
 const renderDatePicker = ({input, placeholder, defaultValue, meta: {touched, error} }) => (
-    <DatePicker {...input}  dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
+    <DatePicker {...input} className="uk-input uk-width-small uk-margin-left uk-margin-right uk-form-controls" dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
 );
 
 class ApplicationForm extends Component {
@@ -43,6 +44,7 @@ class ApplicationForm extends Component {
     }
     this.props.initialize(initData)
   }
+
   handleFormSubmit = data => this.props.onSubmit(data)
 
   render() {
@@ -50,63 +52,64 @@ class ApplicationForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <div >
-            <h3 ><span>Who am I applying with?</span></h3>
-            <label>Company:</label>
+          <div className="uk-margin uk-position-center">
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Who am I applying with?</span></h3>
+            <label className="uk-form-label">Company:</label>
             <Field
               name="company"
               component={renderField}
             />
-            <label>Contact Name:</label>
+            <label className="uk-form-label">Contact Name:</label>
             <Field
               name="contact_name"
               component={renderField}
             />
-            <label>Contact Title:</label>
+            <label className="uk-form-label">Contact Title:</label>
             <Field
               name="contact_title"
               component={renderField}
             />
-            <h3><span>What are we doing?</span></h3>
-            <label>Date:</label>
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What are we doing?</span></h3>
+            <label className="uk-form-label">Date:</label>
             <Field
               name="date"
               component={renderDatePicker}
             />
-            <label>Action:</label>
+            <label className="uk-form-label">Action:</label>
             <Field
               name="action"
               component={renderField}
             />
-            <label>Completed?</label>
+            <label className="uk-form-label">Completed?</label>
             <Field
               name="complete"
               component={renderCheckbox}
             />
-            <h3><span>What kind of job is this for?</span></h3>
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What kind of job is this for?</span></h3>
             <label className="uk-form-label">Job Title:</label>
             <Field
               name="job_title"
               component={renderField}
             />
-            <label>Job URL:</label>
+            <label className="uk-form-label">Job URL:</label>
             <Field
               name="job_url"
               component={renderField}
             />
-          <label>Notes:</label>
+          <label className="uk-form-label">Notes:</label>
             <Field
               name="notes"
               type="textarea"
               component={renderField}
             />
           </div>
-          <button action="submit">Save</button>
+          <button action="submit" className="uk-button uk-position-bottom-center uk-margin-bottom uk-button-primary">Save</button>
         </form>
       </div>
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return { currentApplication: state.applications.currentApplication }
 }
