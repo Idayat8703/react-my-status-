@@ -90,7 +90,13 @@ class ApplicationsTable extends Component {
       .map((app, index) => <ApplicationRow key={index} application={app} user_id={this.props.currentUser.id} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
     }
 
-
+    const modalStyle = {
+      overlay: {
+        "position": "absolute",
+        "overflow": "auto",
+        "minHeight": "825px",
+      }
+    }
     return (
       <div className="uk-overflow-auto">
         {this.props.applications.length > 0 ?
@@ -134,7 +140,7 @@ class ApplicationsTable extends Component {
           isOpen={this.state.modalIsOpen}
           contentLabel="Modal"
           onRequestClose={this.closeModal}
-          >
+          style={modalStyle}>
           <h1 className="uk-heading-line uk-text-center uk-padding"><span>View/Edit Application</span></h1>
           <ApplicationForm onSubmit={this.handleUpdateApplication}/>
           <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>

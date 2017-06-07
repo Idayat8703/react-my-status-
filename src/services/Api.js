@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-const BASE_URL = 'http://localhost:3001/api/v1'
+const BASE_URL = 'https://blooming-waters-37105.herokuapp.com/api/v1'
 
 const parseResponse = (response) => {
   return response.json()
