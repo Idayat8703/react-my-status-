@@ -37,7 +37,7 @@ class App extends Component {
       this.props.authenticate(token)
     } else {
       // Ping the API server in case it hasn't been used in 30 inutes and Heroku put it to sleep
-      fetch('https://blooming-waters-37105.herokuapp.com/api/v1')
+      fetch('http://localhost:3001/api/v1')
     }
   }
   render() {
