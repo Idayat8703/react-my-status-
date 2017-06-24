@@ -20,6 +20,7 @@ class ApplicationsTable extends Component {
     }
   }
 
+
   componentDidMount() {
     const user_id = this.props.currentUser.id
 
