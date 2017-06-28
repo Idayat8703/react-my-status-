@@ -104,6 +104,7 @@ class ApplicationForm extends Component {
             />
           </div>
           <button action="submit" className="uk-button uk-position-bottom-center uk-margin-bottom uk-button-primary">Save</button>
+          <button type="button">Vote</button>
         </form>
       </div>
     )
