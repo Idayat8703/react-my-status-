@@ -20,7 +20,6 @@ class ApplicationsTable extends Component {
     }
   }
 
-
   componentDidMount() {
     const user_id = this.props.currentUser.id
 
@@ -54,8 +53,10 @@ class ApplicationsTable extends Component {
   }
 
   handleUpdateApplication = (data) => {
+    console.log('datttttt', data)
     const user_id = this.props.currentUser.id
-    const app_id = this.props.currentApplication.id
+    console.log('datttttt', user_id)
+    const app_id = (this.props.currentApplication.id || data.id)
     return ApiServices.patch("/users/" + user_id + "/applications/" + app_id, data, this.props.token)
       .then(response => {
         const { application } = response
@@ -88,9 +89,8 @@ class ApplicationsTable extends Component {
 
       RenderedRows = this.filteredApplications()
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .map((app, index) => <ApplicationRow key={index} application={app} user_id={this.props.currentUser.id} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
+      .map((app, index) => <ApplicationRow key={index} application={app} user_id={this.props.currentUser.id} onClick={this.handleRowClick} onDelete={this.removeItem} onVote={this.handleUpdateApplication}/>)
     }
-
     const modalStyle = {
       overlay: {
         "position": "absolute",

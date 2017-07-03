@@ -1,6 +1,7 @@
 const initialState = {
   applications: [],
-  currentApplication: {}
+  currentApplication: {},
+  count: { value: 0}
 }
 
 export default (state = initialState, action) => {
@@ -49,6 +50,17 @@ export default (state = initialState, action) => {
                     ],
                     currentApplication: {}
               }
+
+              case 'INCREMENT_VOTE':
+              console.log('red ou', action)
+              //const id = action.id;
+              //const incrementedIndex = state.applications.findIndex(a => a.id === action.id)
+              //if (action.id === action.count) {
+              return Object.assign({}, state, { count: {
+                id: action.id,
+                value: action.count
+              }})
+            //}
 
             default:
               return state;
