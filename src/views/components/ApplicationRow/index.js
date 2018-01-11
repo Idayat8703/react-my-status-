@@ -10,8 +10,6 @@ class ApplicationRow extends Component {
  }
 
  buttonIncrementer () {
-  //  e.preventDefault()
-   console.log("hi");
 
    this.props.onVote({vote: (this.props.application.vote) + 1, id: this.props.application.id})
  }
