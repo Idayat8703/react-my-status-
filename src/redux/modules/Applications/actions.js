@@ -6,7 +6,6 @@ export const gotApplications = (applications) => {
 }
 
 export const addApplication = (application) => {
-  console.log("hi",application);
   return {
     type: 'ADD_APPLICATION',
     application: application
@@ -42,7 +41,6 @@ export const deleteApplication = (id) => {
 }
 
 export const increment = (count, id) => {
-  console.log('the count', count)
     return  {
     type: 'INCREMENT_VOTE',
     count: count + 1,
